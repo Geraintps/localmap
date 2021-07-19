@@ -68,6 +68,11 @@ export class MapTest {
         return new EditorTest(stuffToDoInEditor);
     }
 
+    addPlaceAtCentreWithPlus(stuffToDoInEditor) {
+        cy.get('#addPlaceButton').click();
+        return new EditorTest(stuffToDoInEditor);
+    }
+
     /** Test that index contains a given name or a specific count of items */
     indexContains(item, count = -1, clearSearch = false) {
         if (clearSearch) cy.get("#searchCancel").click();
@@ -178,7 +183,15 @@ export class MapTest {
     }
 
     checkLightBox(picsExpected, contentExpected, commentsExpected) {
-        if (picsExpected == 0) cy.get(".infoBox").should("contain.text", contentExpected).click();
+        if (picsExpected == 0) {
+            cy.get(".infoBox").then($box => {
+                if ($box.is(':visible')){
+                    cy.get(".infoBox").should("contain.text", contentExpected).click();
+                } else {
+                    cy.get("#lbTitle").should("contain.text", contentExpected).click();
+                }
+            });
+        }
         cy.get("#lightbox").should("be.visible");
         if (picsExpected == 1) cy.get("#onePicBox").should("be.visible");
         if (commentsExpected) cy.get("#lightboxComments").should("be.visible");
