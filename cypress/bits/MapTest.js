@@ -64,7 +64,7 @@ export class MapTest {
     /** Add place using right-click */
     addPlaceAtCentre(stuffToDoInEditor) {
         cy.get('#theMap').rightclick();
-        cy.get("a").contains("Add place here").click();
+        cy.get("a").contains("Add place here").then(x => x.click());
         return new EditorTest(stuffToDoInEditor);
     }
 

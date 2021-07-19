@@ -27,11 +27,11 @@ describe("Tracking", function () {
         });
         cy.window().then(win => {win.map.moveTo(-0.124551, 51.500935, 0, 0);
             mapTest.addPlaceAtCentre((editor) => {
-                editor.textInput("Test place 200m", "ego");
+                editor.textInput("Test place 1000m", "ego");
                 cy.get("#author").click();
                 cy.get("#editTrackingRangeItem").click();
-                cy.get("#rangeInput").type("{selectall}" + "200")
-                    .should('have.text', "200");
+                cy.get("#rangeInput").type("{selectall}" + "1000")
+                    .should('have.text', "1000");
                 cy.get("#rangeDialog").click();
                 cy.get("#ego").click();
                 cy.get("#getLinkButton").click();
@@ -58,12 +58,12 @@ describe("Tracking", function () {
             cy.window().then(win => {
                 win.tracker.paused = false;
                 win.updatePosition({ coords: { latitude: 51.500935, longitude: -0.124551 } });
-                mapTest.checkLightBox(0, "Test place 200m");
+                mapTest.checkLightBox(0, "Test place 1000m");
             })
             cy.window().then(win => {
                 win.tracker.paused = false; 
                 win.updatePosition({ coords: { latitude: 51.500935, longitude: -0.124551 } });
-                mapTest.checkLightBox(0, "Test place 200m");
+                mapTest.checkLightBox(0, "Test place 1000m");
             })
             cy.get("#lightboxBack").click();
             cy.window().then(win => {
