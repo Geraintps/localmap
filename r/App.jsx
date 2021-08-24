@@ -2,100 +2,27 @@ class TopLeft extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [], text: '', signedin: false };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
     if (this.state.signedin) {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "label",
-          null,
-          "Signed In"
-        ),
-        React.createElement(
-          "button",
-          null,
-          "?"
-        ),
-        React.createElement(
-          "button",
-          null,
-          "+"
-        ),
-        React.createElement(
-          "button",
-          null,
-          "🏠"
-        ),
-        React.createElement(
-          "p",
-          null,
-          ""
-        ),
-        React.createElement("input", {
-          id: "searchBar",
-          onChange: this.handleChange,
-          value: this.state.text
-        }),
-      )
+      return <div className="topLeft">
+        <label>Signed In</label>
+        <button>?</button>
+        <button>+</button>
+        <button>🏠</button>
+        <br></br>
+        <input></input>
+      </div>
     }
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(
-        'button',
-        { onClick: () => this.setState({ signedin: true }) },
-        'Sign In'
-      ),
-      React.createElement(
-        "button",
-        null,
-        "?"
-      ),
-      React.createElement(
-        "button",
-        null,
-        "+"
-      ),
-      React.createElement(
-        "button",
-        null,
-        "🏠"
-      ),
-      React.createElement(
-        "p",
-        null,
-        ""
-      ),
-      React.createElement("input", {
-        id: "searchBar",
-        onChange: this.handleChange,
-        value: this.state.text
-      }),
-    )
-  }
-
-  handleChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.state.text.length === 0) {
-      return;
-    }
-    const newItem = {
-      text: this.state.text,
-      id: Date.now()
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-      text: ''
-    }));
+    return <div className="topLeft">
+    <button onClick={() => this.setState({ signedin: true})}>Sign In</button>
+    <button>?</button>
+    <button>+</button>
+    <button>🏠</button>
+    <br></br>
+    <input></input>
+  </div>
   }
 }
 
@@ -103,44 +30,13 @@ class TopRight extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [], text: '' };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "button",
-        null,
-        "+"
-      ),
-      React.createElement(
-        "button",
-        null,
-        "-"
-      )
-    );
-  }
-
-  handleChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.state.text.length === 0) {
-      return;
-    }
-    const newItem = {
-      text: this.state.text,
-      id: Date.now()
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-      text: ''
-    }));
+    return <div className="topRight">
+      <button>+</button>
+      <button>-</button>
+    </div>
   }
 }
 
@@ -148,82 +44,23 @@ class BottomLeft extends React.Component {
   constructor(props) {
     super(props);
     this.state = { items: [], text: '', translated: false };
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   render() {
     if (this.state.translated) {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement("input", {
-          id: "searchBar2",
-          onChange: this.handleChange,
-          value: this.state.text
-        }),
-        React.createElement(
-          "button",
-          null,
-          "Tags"
-        ),
-        React.createElement(
-          "button",
-          null,
-          "New!"
-        ),
-        React.createElement(
-          'button',
-          { onClick: () => this.setState({ translated: false }) },
-          'English'
-        ),
-      );
+      return <div className="bottomLeft">
+        <input></input>
+        <button>Tags</button>
+        <button>New!</button>
+        <button onClick={() => this.setState({ translated: false})}>English</button>
+      </div>
     }
-
-    return React.createElement(
-      "div",
-      null,
-      React.createElement("input", {
-        id: "searchBar2",
-        onChange: this.handleChange,
-        value: this.state.text
-      }),
-      React.createElement(
-        "button",
-        null,
-        "Tags"
-      ),
-      React.createElement(
-        "button",
-        null,
-        "New!"
-      ),
-      React.createElement(
-        'button',
-        { onClick: () => this.setState({ translated: true }) },
-        'Cymraeg'
-      ),
-    );
-  }
-
-
-  handleChange(e) {
-    this.setState({ text: e.target.value });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    if (this.state.text.length === 0) {
-      return;
-    }
-    const newItem = {
-      text: this.state.text,
-      id: Date.now()
-    };
-    this.setState(state => ({
-      items: state.items.concat(newItem),
-      text: ''
-    }));
+    return <div className="bottomLeft">
+    <input></input>
+    <button>Tags</button>
+    <button>New!</button>
+    <button onClick={() => this.setState({ translated: true})}>Cymraeg</button>
+  </div>
   }
 }
 
@@ -245,24 +82,12 @@ class Popup extends React.Component {
   render() {
     this.backgroundDim();
     if (!this.state.popupOpen) {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "button",
-          { onClick: () => this.setState({ popupOpen: true }) },
-          "Open Popup"
-        ),
-      );
+      return <div className="popupButton">
+        <button onClick={() => this.setState({ popupOpen: true })}>Open Popup</button>
+      </div>
     } else {
-      return React.createElement(
-        "div",
-        null,
-        React.createElement(
-          "button",
-          { onClick: () => this.setState({ popupOpen: false }) },
-          "Close Popup"
-        ),
+      return <div className="popupButton">
+        <button onClick={() => this.setState({ popupOpen: false })}>Close Popup</button>
         <div className="popupBox">
           <button className="tags">Animals</button>
           <button className="tags">Plants</button>
@@ -270,7 +95,7 @@ class Popup extends React.Component {
           <button className="tags">People</button>
           <button className="tags">Weather</button>
           <button className="tags">Me</button>
-          <button onClick={() => this.setState({ popupOpen: false})} className="closePopup">X</button>
+          <button onClick={() => this.setState({ popupOpen: false })} className="closePopup">X</button>
           <label>Username</label>
           <br></br>
           <br></br>
@@ -279,7 +104,7 @@ class Popup extends React.Component {
           <br></br>
           <input className="description" placeholder="Description"></input>
         </div>
-      );
+      </div>
     }
   }
 }
