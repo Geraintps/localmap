@@ -1,0 +1,41 @@
+#popupContainer {
+    position: absolute;
+    width: 80%;
+    height: 80%;
+    top: 20%;
+    left: 10%;
+    text-align: center;
+}
+.popupBox{
+    background-color: white;
+    height: 500px;
+    box-shadow: 0px 0px 10px 0px;
+    padding: 10px;
+}
+.openPopup{
+    border-radius: 30px;
+    padding: 5px 10px;
+    font-size: larger;
+}
+.tags {
+    border-radius: 30px;
+    font-size: small;
+}
+#popupContainer .popupBox label {
+    float: right;
+}
+#popupContainer .popupBox input {
+    width: 90%;
+}
+.closePopup{
+    border-radius: 30px;
+    font-size: small;
+    float: right;
+    background-color: red;
+}
+.tags{
+    float: left;
+}
+.description{
+    height: 80%;
+}
