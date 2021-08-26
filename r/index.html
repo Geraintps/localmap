@@ -9,11 +9,97 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/popupStyle.css"/>
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-  </head>
-  <body>
-    <img src="images/background.png" id="image"></img>
     
-    <div id="popupContainer"></div>
+    <script src="/localmap/scripts/azure-storage.common.min.js"></script>
+    <script src="/localmap/scripts/azure-storage.blob.min.js"></script>
+    <script src="/localmap/scripts/heic2any.min.js"></script>
+    <script src="/localmap/scripts/jquery-3.4.1.min.js"></script>
+    <script src="/localmap/scripts/markerclustererplus.min.js"></script>
+    <script src="/localmap/scripts/util.js?v=38"></script>
+    <script src="/localmap/scripts/splash.js?v=4"></script>
+    <script src="/localmap/scripts/sign-in.js?v=18"></script>
+    <script src="/localmap/scripts/exif-js.js"></script>
+    <script src="/localmap/scripts/model.js?v=23"></script>
+    <script src="/localmap/scripts/lightbox.js?v=11"></script>
+    <script src="/localmap/scripts/azuredb.js?v=14"></script>
+    <script src="https://nls.tileserver.com/api.js"></script>
+    <script src="/localmap/scripts/maps.js?v=63"></script>
+    <script src="/localmap/scripts/text-edit.js?v=7"></script>
+    <script src="/localmap/scripts/deep-map.js?v=77"></script>
+    <script src="/localmap/scripts/editor.js?v=11"></script>
+    <script src="/localmap/scripts/petals.js?v=11"></script>
+    <script src="/localmap/scripts/pics.js?v=9"></script>
+    <script src="/localmap/scripts/help.js?v=2"></script>
+    <script src="/localmap/scripts/groupSelector.js?v=6"></script>
+    <script src="/localmap/scripts/index.js?v=34"></script>
+    <script src="/localmap/scripts/track.js?v=20"></script>
+    <script src="/localmap/scripts/ProximityPolygons.js?v=5"></script>
+    <script src="/localmap/scripts/zones.js?v=6"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="/localmap/scripts/recorder.js"></script>
+    <script src="/localmap/scripts/recordingUI.js?v=3"></script>
+
+    <link rel="icon" type="img/png" href="/localmap/img/favicon96.png" sizes="96x96" />
+    <link rel="icon" type="img/png" href="/localmap/img/favicon32.png" sizes="32x32" />
+    <link rel="icon" type="img/png" href="/localmap/img/favicon16.png" sizes="16x16" />
+    <link rel="stylesheet" type="text/css" href="/localmap/css/deep-map.css?v=44" />
+    <link rel="stylesheet" href="/localmap/scripts/v6.5.0-dist/ol.css" />
+    <style>
+        #splash {
+            position: absolute;
+            top: 0px; 
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 200;
+        }
+
+        #splashPanel {
+            border-radius: 10px;
+            border: black solid 4px;
+            background-color: white;
+            font: sans-serif 18pt;
+            color: darkblue;
+            position: absolute;
+            top: 5%;
+            left: 10%;
+            right: 10%;
+            bottom: 5%;
+            display: block;
+        }
+
+        .splashScroller {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            overflow: auto;
+            padding: 10px;
+        }
+
+        /* Avoid logos forcing column wide: */
+        #splashPanel img {
+            max-width: 70vw;
+        }
+
+        @media (min-width:800px) {
+            .splashLogoAlignLeft {
+                float: left;
+                vertical-align: top;
+            }
+        }
+    </style>
+    
+    
+
+  </head>
+  <body onload="init()">
+
+    <div id="theMap"></div>
+    
+    <div id="topLayer"></div>
+
+    <!--<div id="popupContainer"></div>-->
 
     <div id="topLeftControls"></div>
 

@@ -6,7 +6,7 @@ class Popup extends React.Component {
 
   
     backgroundDim() {
-      let background = document.getElementById("image");
+      let background = document.getElementById("theMap");
       if (this.state.popupOpen) {
         background.style.opacity = "0.5";
       } else {
@@ -49,4 +49,4 @@ class Popup extends React.Component {
 
 
 
-ReactDOM.render(React.createElement(Popup, null), document.getElementById('popupContainer'));
+//ReactDOM.render(React.createElement(Popup, null), document.getElementById('popupContainer'));
