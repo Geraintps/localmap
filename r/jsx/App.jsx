@@ -216,7 +216,7 @@ class topLayer extends React.Component {
                     <div id="editorTitleDescriptionPrompt" className="popupTextTopLine">TITLE<br /><br />DESCRIPTION
                     </div>
                     <div className="popupcontent">
-                        <div id="popuptext" contenteditable="true" onClick={event.stopPropagation}>
+                        <div id="popuptext" contentEditable="true" onClick={event.stopPropagation}>
                         </div>
                         <div id="popupComments"></div>
                     </div>
@@ -233,7 +233,7 @@ class topLayer extends React.Component {
                         /*onChange={doUploadFiles(this, this.files, g('popup').placePoint)}*/ type="file" title="upload"
                         name="uploadToPlaceButton" multiple />
                     <div id="voiceRecorder" className="panelButton addButton " onClick={showVoiceRecorder}
-                        title="Voice recorder"><img src="img/recorder.png" height="25px" style={{padding: 3}} /></div>
+                        title="Voice recorder"><img src="/localhost/img/recorder.png" height="25px" style={{padding: 3}} /></div>
                     <div id="getLinkButton" className="panelButton addButton "
                         /*onClick={showLink(g('popup').placePoint.place, event)}*/ title="Share a link to this place">
                         <img src="/localmap/img/getlink.png" />
@@ -245,7 +245,7 @@ class topLayer extends React.Component {
 
           <div id="tags"> </div>
           <div id="author"> </div>
-          <div id="popclose" onclick={closePopup}>X</div>
+          <div id="popclose" onClick={closePopup}>X</div>
 
           <div id="recorderPopup">
           </div>
