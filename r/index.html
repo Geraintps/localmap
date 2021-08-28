@@ -16,7 +16,6 @@
     <script src="/localmap/scripts/jquery-3.4.1.min.js"></script>
     <script src="/localmap/scripts/markerclustererplus.min.js"></script>
     <script src="/localmap/scripts/util.js?v=38"></script>
-    <script src="/localmap/scripts/splash.js?v=4"></script>
     <script src="/localmap/scripts/sign-in.js?v=18"></script>
     <script src="/localmap/scripts/exif-js.js"></script>
     <script src="/localmap/scripts/model.js?v=23"></script>
@@ -39,57 +38,16 @@
     <script src="/localmap/scripts/recorder.js"></script>
     <script src="/localmap/scripts/recordingUI.js?v=3"></script>
 
-    <link rel="icon" type="img/png" href="/localmap/img/favicon96.png" sizes="96x96" />
-    <link rel="icon" type="img/png" href="/localmap/img/favicon32.png" sizes="32x32" />
-    <link rel="icon" type="img/png" href="/localmap/img/favicon16.png" sizes="16x16" />
+    <link rel="icon" type="img/png" href="img/favicon96.png" sizes="96x96" />
+    <link rel="icon" type="img/png" href="img/favicon32.png" sizes="32x32" />
+    <link rel="icon" type="img/png" href="img/favicon16.png" sizes="16x16" />
     <link rel="stylesheet" type="text/css" href="/localmap/css/deep-map.css?v=44" />
     <link rel="stylesheet" href="/localmap/scripts/v6.5.0-dist/ol.css" />
-    <style>
-        #splash {
-            position: absolute;
-            top: 0px; 
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            background-color: rgba(255, 255, 255, 0.8);
-            z-index: 200;
-        }
 
-        #splashPanel {
-            border-radius: 10px;
-            border: black solid 4px;
-            background-color: white;
-            font: sans-serif 18pt;
-            color: darkblue;
-            position: absolute;
-            top: 5%;
-            left: 10%;
-            right: 10%;
-            bottom: 5%;
-            display: block;
-        }
-
-        .splashScroller {
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            overflow: auto;
-            padding: 10px;
-        }
-
-        /* Avoid logos forcing column wide: */
-        #splashPanel img {
-            max-width: 70vw;
-        }
-
-        @media (min-width:800px) {
-            .splashLogoAlignLeft {
-                float: left;
-                vertical-align: top;
-            }
-        }
-    </style>
-    
+    <script>
+        // Occasional problem loading map
+        window.restartTimer = setTimeout(() => { window.location.reload(); }, 20000);
+    </script>
     
 
   </head>
@@ -99,20 +57,81 @@
     
     <div id="topLayer"></div>
 
+    <div id="rangeDialog"></div>
+    <input id="attachSoundInput" style="display:none;opacity: 0;" onchange="doAttachSound(this)" type="file"
+            title="sound file" name="attachSoundInput" />
+
+    <div id="linkDialog" class="dialog" onclick="hide(this)"></div>
+
+    <div id="splash"></div>
+
+    <div id="menu" class="menu"></div>
+        <div id="message" class="dialog" onclick="hide(this)">
+            <div id="messageInner"></div>
+        </div>
+
+        <div id="youtube" onclick="hide(this);g('youtubePlayer').src=''">
+            <iframe id="youtubePlayer" type="text/html">
+            </iframe>
+        </div>
+        <div id="configDialog" class="dialog" onclick="hide(this)">
+            <div onclick="event.cancelBubble=true">
+                <div id="configHeader"></div>
+                <p>
+                    <button id="signOutButton2" onclick='hide("configDialog");signOut()' title='Sign out'>Sign
+                        out</button>
+                </p>
+                <div id="config"></div>
+                <div id="projectLink" style="display:none">
+                    <hr />
+                    <a href="contributors.html" target="settings"><button>Project settings &gt;</button></a>
+                    <a id="statsLink" href="stats.html" target="settings"><button>Stats &gt;</button></a>
+                    <a id="exportLink" target="settings"><button>Print all &gt;</button></a>
+                    <a id="rawExportLink" target="settings"><button>Export</button></a>
+                    <button onclick="hide('configDialog');showZoneUI();">Groupie</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="zones" style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:none;"></div>
+    <div id="curtain"
+        style="z-index:400;position:fixed;top:0;left:0;width:100vw;height:100vh;background-color: whitesmoke;transition: all 1s;">
+        ...</div>
+    <iframe style="z-index: 2000;height:750px;width:600px;position: absolute; left:50px; top:50px;display:none;"
+        id="signinFrame"></iframe>
+    <script>
+        setCookie("assurance", "2");
+        try { if (localStorage) localStorage.clear(); } catch { }
+
+        let splashes = Array.from(document.getElementsByClassName("splashScroller")); // copy so that remove() doesn't change it
+        for (let si = 0; si < splashes.length; si++) {
+            if (splashes[si].id != window.project.splashId) {
+                splashes[si].remove();
+            }
+        }
+
+        g("curtain").style.opacity = 0;
+        setTimeout(() => {
+            g("curtain").remove();
+        }, 1000);
+
+    </script>
+
     <!--<div id="popupContainer"></div>-->
 
-    <div id="topLeftControls"></div>
+    <!--<div id="topLeftControls"></div>
 
     <div id="topRightControls"></div>
     
-    <div id="bottomLeftControls"></div>
+    <div id="bottomLeftControls"></div>-->
 
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-
+    <script src="/localmap/scripts/splash.js?v=4"></script>
   <!-- Load our React component. -->
   <script src="jsx/App.jsx" type="text/babel"></script>
-  <script src="jsx/popup.jsx" type="text/babel"></script>
+  <!--<script src="jsx/popup.jsx" type="text/babel"></script>-->
+
 
   </body>
 </html>

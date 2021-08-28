@@ -24,7 +24,7 @@
     <input></input>
   </div>
   }
-}*/
+}
 
 class TopRight extends React.Component {
   constructor(props) {
@@ -62,7 +62,7 @@ class BottomLeft extends React.Component {
     <button onClick={() => this.setState({ translated: true})}>Cymraeg</button>
   </div>
   }
-}
+}*/
 
 class theMap extends React.Component {
   constructor(props) {
@@ -85,6 +85,78 @@ class topLayer extends React.Component {
     this.state = {  };
   }
 
+  windowtrackeronPauseButton() {
+    window.tracker.onPauseButton();
+  }
+
+  FileSelectDialog() {
+    showFileSelectDialog("uploadButton");
+  }
+
+  UploadFiles() {
+    doUploadFiles(this, this.files, null);
+  }
+
+  AddPlaceButton() {
+    onAddPlaceButton(this);
+  }
+
+  maptoggleType() {
+    map.toggleType(event);
+  }
+
+  maptoggleOpacity() {
+    map.toggleOpacity();
+  }
+
+  _handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === "Tab") {
+      this.codeAddress(e.target.value);
+    }
+  }
+  __handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.key === "Tab") {
+      index.doSearch(e.target.value.trim())
+    }
+  }
+  formatDoc(string1, string2) {
+    //onFormatDoc(string1, string2);
+  }
+
+  searchCancel() {
+    g('searchButton').value='';
+    index.doSearch('')
+  }
+
+  codeAddress(address) {
+    let cleanAddress = address.replace(/[|&;$%@"<>(){}#~:^£!*]/g, "").trim();
+    if (!cleanAddress) return;
+    map.gotoAddress(cleanAddress);
+  }
+
+  uploadPlaceToButton() {
+    doUploadFiles(this, this.files, g('popup').placePoint);
+  }
+
+  addPicToPlaceButton() {
+    showFileSelectDialog('uploadToPlaceButton');
+  }
+
+  getLinkButton() {
+    showLink(g('popup').placePoint.place, event);
+  }
+
+  menuClick(x, y) {
+    onmenuclick(x, y);
+  }
+  hideMenu(x) {
+    hide(x);
+  }
+  openSideIndex() {
+    index.openIndex();
+  }
+
+
   render() {
     return <div>
       <div id="loosePicsShow"></div>
@@ -97,17 +169,17 @@ class topLayer extends React.Component {
             style={{ display: "none", width: 25, height: 25, verticalAlign: "middle" }} title="Settings"
             onClick={onSettingsButton} />
         </div>
-        <div id='pauseButton' className="panelButton whiteButton" style={{ display: "none" }}//onClick={window.tracker.onPauseButton}
+        <div id='pauseButton' className="panelButton whiteButton" style={{ display: "none" }} onClick={this.windowtrackeronPauseButton}
           title="Pause/resume tracking">
           <img src='/localmap/img/tracking.png' />
         </div>
         <div id='showHelpButton' className="panelButton whiteButton" onClick={dohelp} title="help/about">?</div>
         <div id="addFileButton" className="panelButton addButton" title="Upload pics and then place them on the map"
-          /*onClick={showFileSelectDialog("uploadButton")}*/ style={{display:"none"}}>++</div>
-        <input id="uploadButton" style={{display:"none", opacity: 0}} //onChange={doUploadFiles(this, this.files, null)}
+          onClick={this.FileSelectDialog} style={{display:"none"}}>++</div>
+        <input id="uploadButton" style={{display:"none", opacity: 0}} onChange={this.UploadFiles}
           type="file" title="upload" name="uploadButton" multiple />
         <div id="addPlaceButton" className="panelButton addButton"
-          title="Put notes and pictures on the map at the target point" //onClick={onAddPlaceButton(this)}
+          title="Put notes and pictures on the map at the target point" onClick={this.AddPlaceButton}
           style={{display:"none"}}>+</div>
         <div id="workingTitle" className="panelButton whiteButton"></div>
         <div id="picLaundryFlag" className="panelButton"
@@ -133,9 +205,9 @@ class topLayer extends React.Component {
         </div>
         <div className="panelButton whiteButton" id="opacitySlider" onClick={opacitySlider}>Labels</div>
 
-        <img id="mapbutton" className="panelButton" /*onClick={map.toggleType(event)} onContextMenu={map.toggleOpacity}*/ title="Aerial/map. CTRL for transparent overlay" src="/localmap/img/map-icon.png" />
+        <img id="mapbutton" className="panelButton" onClick={this.maptoggleType} onContextMenu={this.maptoggleOpacity} title="Aerial/map. CTRL for transparent overlay" src="/localmap/img/map-icon.png" />
         <input id="addressSearchBox" className="geoSearch searchInput panelButton whiteButton" type="textbox"
-            placeholder="Postcode or place" /*onChange={window.map.codeAddress(this.value)}*//>
+            placeholder="Postcode or place" onKeyDown={this._handleKeyDown}/>
         <div id="infowindow-content">
             <span id="place-name" className="title"></span><br />
             <strong>Place ID</strong>: <span id="place-id"></span><br />
@@ -145,17 +217,17 @@ class topLayer extends React.Component {
         <div id="groupSelectorBox"></div>
         <div id="indexSidebar"></div>
         <div id="indexFlag" style={{display:"none"}}>
-            <div onClick={index.openIndex}>&gt;</div>
+            <div onClick={this.openSideIndex}>&gt;</div>
         </div>
 
         <div id="bottomLeftPanel">
             <div style={{display:"inline-block", position:"relative"}}>
                 <input id="searchButton" type="text" className="searchInput panelButton smallButton"
-                    placeholder="Search index" /*onchange={index.doSearch(this.value.trim())}*/ title="search" />
+                    placeholder="Search index" onKeyDown={this.__handleKeyDown} title="search" />
                 <span id="searchCount"
                     style={{position:"absolute", left:4, top:2, color:"darkred", fontSize:"small"}}></span>
                 <span id="searchCancel" style={{position:"absolute", right:15, top:3, color:"red", display:"none"}}
-                    /*onClick={() => g('searchButton').value='', index.doSearch('')}*/>X</span>
+                    onClick={this.searchCancel}>X</span>
             </div>
             <div id="tagKeyButton" className="panelButton smallButton" onClick={showTagsKey} title="Filter by tag">Tags
             </div>
@@ -193,19 +265,19 @@ class topLayer extends React.Component {
           <div></div>
                 <div id="groupEditorBox"></div>
                 <div id="toolBar1">
-                    <div className="toolbutton" /*onClick={onFormatDoc('formatblock','h4')}*/id="toolHead" title="Sub heading">
-                        H/*
-                    </div>/*
-                    <div className="toolbutton" /*onClick={onFormatDoc('formatblock','div')}*/ id="toolPara"
+                    <div className="toolbutton" onClick={this.formatDoc('formatblock','h4')} id="toolHead" title="Sub heading">
+                        H
+                    </div>
+                    <div className="toolbutton" onClick={this.formatDoc('formatblock','div')} id="toolPara"
                         title="Plain paragraph">¶</div>
                     <div id="welshKeys" style={{display:"inline-block"}}>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','â')}*/>â</div>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','ê')}*/>ê</div>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','î')}*/>î</div>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','ô')}*/>ô</div>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','û')}*/>û</div>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','ŵ')}*/>ŵ</div>
-                        <div className="toolbutton" /*onClick={onFormatDoc('InsertText','ŷ')}*/>ŷ</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','â')}>â</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','ê')}>ê</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','î')}>î</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','ô')}>ô</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','û')}>û</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','ŵ')}>ŵ</div>
+                        <div className="toolbutton" onClick={this.formatDoc('InsertText','ŷ')}>ŷ</div>
                     </div>
                     <div className="toolbutton" onClick={onCreateLink} id="insertLinkButton" title="Insert link"><img
                             src="/localmap/img/link.png" width="18px" height="18px"/></div>
@@ -226,16 +298,16 @@ class topLayer extends React.Component {
                     <div id="thumbnails"></div>
                     
                     <div className="panelButton addButton " id="addPicToPlaceButton"
-                        onClick={showFileSelectDialog('uploadToPlaceButton')}
+                        onClick={this.addPicToPlaceButton}
                         title="Add photos, sound files or videos to this note">+</div>
                     
                     <input id="uploadToPlaceButton" style={{display:"none", opacity: 0}}
-                        /*onChange={doUploadFiles(this, this.files, g('popup').placePoint)}*/ type="file" title="upload"
+                        onChange={this.uploadPlaceToButton} type="file" title="upload"
                         name="uploadToPlaceButton" multiple />
                     <div id="voiceRecorder" className="panelButton addButton " onClick={showVoiceRecorder}
-                        title="Voice recorder"><img src="/localhost/img/recorder.png" height="25px" style={{padding: 3}} /></div>
+                        title="Voice recorder"><img src="/localmap/img/recorder.png" height="25px" style={{padding: 3}} /></div>
                     <div id="getLinkButton" className="panelButton addButton "
-                        /*onClick={showLink(g('popup').placePoint.place, event)}*/ title="Share a link to this place">
+                        onClick={this.getLinkButton} title="Share a link to this place">
                         <img src="/localmap/img/getlink.png" />
                     </div>
                     <div id="editorHelpButton" className="panelButton addButton " onClick={showEditorHelp} title="Help">?
@@ -282,24 +354,24 @@ class topLayer extends React.Component {
 
         <div id="lightbox"> </div>
 
-        <div id="loosePicMenu" className="menu" onMouseLeave={hide(this)}>
+        <div id="loosePicMenu" className="menu" onMouseLeave={() => this.hideMenu("loosePicMenu")}>
             <div>&nbsp;</div>
-            <div /*onClick={onmenuclick(this, placeLoosePicCmd)}*/ id="placeLoosePicMenu">Place at focus mark</div>
+            <div id="placeLoosePicMenu" onClick={() => this.menuClick("placeLoosePicMenu", placeLoosePicCmd)} >Place at focus mark</div>
         </div>
 
-        <div id="openAuthorMenu" className="menu" onMouseLeave={hide(this)}>
+        <div id="openAuthorMenu" className="menu" onMouseLeave={() => this.hideMenu("openAuthorMenu")}>
             <div>&nbsp;</div>
-            <div /*onClick={onmenuclick(this, openAuthorCmd)}*/ id="openAuthorMenuItem">Open authorship</div>
-            <div /*onClick={onmenuclick(this, editAuthorCmd)}*/ id="editAuthorMenuItem">Change author name</div>
-            <div /*onClick={onmenuclick(this, editRangeCmd)}*/ id="editTrackingRangeItem">Change tracking range</div>
+            <div id="openAuthorMenuItem" onClick={() => this.menuClick("openAuthorMenuItem", openAuthorCmd)} >Open authorship</div>
+            <div id="editAuthorMenuItem" onClick={() => this.menuClick("editAuthorMenuItem", editAuthorCmd)} >Change author name</div>
+            <div id="editTrackingRangeItem" onClick={() => this.menuClick("editTrackingRangeItem", editRangeCmd)} >Change tracking range</div>
         </div>
-        <div id="petalMenu" className="menu" onMouseLeave={hide(this)}>
+        <div id="petalMenu" className="menu" onMouseLeave={() => this.hideMenu("petalMenu")}>
             <div>&nbsp;</div>
-            <div /*onClick={onmenuclick(this, titlePicCmd)}*/ id="retitlePicMenu">Re-title pic/file</div>
-            <div /*onClick={onmenuclick(this, deletePicCmd)}*/ id="deletePicMenu">Delete pic/file</div>
-            <div /*onClick={onmenuclick(this, attachSoundCmd)}*/ id="attachSoundMenu">Attach a sound file</div>
-            <div /*onClick={onmenuclick(this, attachYouTube)}*/ id="attachYouTubeMenu">Attach a YouTube video</div>
-            <div /*onClick={onmenuclick(this, rotatePicCmd)}*/ id="rot90Menu">Rotate 90deg</div>
+            <div id="retitlePicMenu" onClick={() => this.menuClick("retitlePicMenu", titlePicCmd)} >Re-title pic/file</div>
+            <div id="deletePicMenu" onClick={() => this.menuClick("deletePicMenu", deletePicCmd)} >Delete pic/file</div>
+            <div id="attachSoundMenu" onClick={() => this.menuClick("attachSoundMenu", attachSoundCmd)} >Attach a sound file</div>
+            <div id="attachYouTubeMenu" onClick={() => this.menuClick("attachYouTubeMenu", attachYouTube)} >Attach a YouTube video</div>
+            <div id="rot90Menu" onClick={() => this.menuClick("rot90Menu", rotatePicCmd)} >Rotate 90deg</div>
             </div>
 
     </div>
@@ -307,7 +379,153 @@ class topLayer extends React.Component {
 
 }
 
+class rangeDialog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '', translated: false };
+  }
 
+  hideMenu(x) {
+    hide(x);
+  }
+  blurWhenDone() {
+    var element = document.getElementById("rangeInput");
+    whenDone(element.innerText);
+  }
+
+  render() {
+    return <div onClick={() => this.hideMenu("rangeDialog")}
+      style={{ display: "none", position: "absolute", top: 0, left: 0, bottom: 0, right: 0, backgroundColor: "rgba(0,0,0,0.5)" }}>
+      <div
+        style={{ borderRadius:10, position:"relative", top:"30%", maxWidth:"80%", width:500, margin: "0 auto", backgroundColor:"whitesmoke", border: "2 solid blue", padding:10 }}>
+        <p id="editRangePrompt">Edit the tracking range</p>
+        <div id="rangeInput" type="text"
+          style={{ width:"90%", height:50, margin:"auto", overflow:"hidden", backgroundColor: "white", color:"black", border: "1px solid blue", padding:4 }}
+          contentEditable="true" onBlur={() => this.blurWhenDone()}></div>
+      </div>
+    </div>
+  }
+}
+
+class linkDialog extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '', translated: false };
+  }
+
+  render() {
+    return <div>
+      <div onClick={noPropagate(event)}>Paste a link to a web page here:
+                <br />
+                <input id="linkRef" type="text" size="20" pattern="https?://.+|\.\/\?place=[0-9]{3}"
+                    placeholder="http://..." />
+                <input type="button" onClick={CompleteCreateLink} value="Link" />
+                <span id="linkRemoveOption">
+                    - or -
+                    <br />
+                    <input type="button" onClick={CompleteRemoveLink} value="Remove link" />
+                </span>
+            </div>
+    </div>
+  }
+  
+}
+
+class splash extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '', translated: false };
+  }
+
+  dropSplash() {
+    splashScreen.dropSplash();
+  }
+
+  render() {
+    return <div id="splashPanel">
+
+      <div className="splashScroller" id="spanSplash">
+        <div>
+          <img src="img/favicon96.png" align="left" /> <span id="aboutEN">
+            <h1>Map Digi Penfro</h1>
+            <h3>Exploring Pembrokeshire from many perspectives</h3>
+            <p>Welcome to the Beta version of Map Digi Penfro, a digital mapping tool
+              that allows you to record what you think is important about the places of
+              Pembrokeshire.
+              The map is a work in progress to which you are invited to contribute.
+            </p>
+            <p>The points on this map record nature, poetry, science, art and history. They have
+              been
+              placed
+              here by people young, old and in between who have contributed their knowledge,
+              memories
+              and ideas.</p>
+            <p>Move the map around, click the coloured points, and discover the places we've roamed.
+            </p>
+            <p>You can add your own places to the map.
+            </p>
+            <p>The map is a bilingual space where you will encounter entries written in Welsh and
+              English and other languages too.
+              You are invited to contribute in the language of your choice. </p>
+            <p>Here's a <a href="https://youtu.be/WXjlWxNtUto" target="video">video about making the
+              map.</a></p>
+            <p>Map Digi Penfro is a pilot project developed by Span Digidol tackling rural isolation
+              and community well-being through innovative digital arts projects.</p>
+          </span>
+          <span id="aboutCYM" style={{color:"darkblue"}}>
+            <h1>Map Digi Penfro</h1>
+            <h3>Archwilio Sir Benfro o sawl safbwynt.</h3>
+            <p>Croeso i fersiwn Beta Map Digi Penfro, arf mapio digidol sy’n caniatáu i chi
+              recordio beth rydych chi’n meddwl sydd yn bwysig am leoedd Sir Benfro.
+              Gwaith ar y gweill yw’r map ac fe'ch gwahoddir i gyfrannu ato.</p>
+            <p>Mae’r pwyntiau ar y map hwn yn cofnodi natur, barddoniaeth, gwyddoniaeth, celf a
+              hanes.
+              Fe’u gosodwyd yma gan bobl ifanc, pobl hen a phobl o bob oedran rhyngddynt,
+              sydd wedi cyfrannu eu gwybodaeth, eu hatgofion a’u syniadau.</p>
+            <p>Symudwch y map o gwmpas, cliciwch ar y pwyntiau lliw, a darganfyddwch y
+              lleoedd rydyn ni wedi crwydro.</p>
+            <p>Gallwch hefyd ychwanegu’r lleoedd sy’n bwysig i chi i’r map.
+            </p>
+            <p>Dyma <a href="https://youtu.be/WXjlWxNtUto" target="video">fideo am wneud y map</a>.
+            </p>
+            <p>Datblygwyd Map Digi Penfro trwy Span Digidol prosiect peilot sy’n archwilio
+              ffyrdd y gall y celfyddydau a thechnoleg ddigidol
+              weithio ochr yn ochr i fynd i’r afael â materion megis lles cymunedol ac ynysiad
+              gwledig.</p>
+          </span>
+        </div>
+        <div id="bottombox">
+          <hr />
+          <p id="loadingFlag" style={{ backgroundColor: "yellow" }}>Loading... | Llwytho...</p>
+          <p>This site uses cookies. | Mae'r wefan hon yn defnyddio cwcis.
+            <button id="continueButton" style={{ display: "none" }} className="continueButton"
+              onClick={this.dropSplash}>Continue
+              | Parhewch</button>
+          </p>
+          <p><small><a href="https://www.span-arts.org.uk/" target="_blank" id="spanArtsLink">Span
+            Arts</a> |
+            <span id="privacyOpenLink">
+              <a href="privacy.html#privacy" title="open in new window" target="_blank">Privacy
+                | Preifatrwydd</a> </span>
+            | <a href="img/user-guide.pdf" target="_blank" id="userGuideLink">User guide |
+              Canllaw
+              defnyddiwr</a>
+            | <a href='#' onClick={toggleLanguage} id="toggleLanguageLink">Cymraeg</a>
+          </small></p>
+          <div>
+            <img src="img/logo-ccc.jpg" />
+            <img src="img/logo-eu.jpg" />
+            <img src="img/logo-arwain.jpg" />
+            <img src="img/logo-pcc.jpg" />
+          </div>
+        </div>
+      </div>
+      <div className="closeX boxClose" onClick={this.dropSplash} style={{display:"none"}} id="splashCloseX">
+        X</div>
+    </div>
+
+  }
+}
 
 
 
@@ -322,3 +540,9 @@ class topLayer extends React.Component {
 ReactDOM.render(React.createElement(theMap, null), document.getElementById('theMap'));
 
 ReactDOM.render(React.createElement(topLayer, null), document.getElementById('topLayer'));
+
+ReactDOM.render(React.createElement(rangeDialog, null), document.getElementById('rangeDialog'));
+
+ReactDOM.render(React.createElement(linkDialog, null), document.getElementById('linkDialog'));
+
+ReactDOM.render(React.createElement(splash, null), document.getElementById('splash'));

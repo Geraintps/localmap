@@ -797,7 +797,8 @@ function showMenu(id, item, context, event) {
  * @param {*} fn 
  */
 function onmenuclick(menudiv, fn) {
-    var menuRoot = menudiv.parentElement;
+    var elementID = document.getElementById(menudiv);
+    var menuRoot = elementID.parentElement;
     fn(menuRoot.item, menuRoot.context);
     menuRoot.style.display = "none";
 }
