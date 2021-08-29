@@ -4,6 +4,14 @@ class menus extends topLayer {
         this.state = { items: [], text: '', translated: false };
     }
 
+    menuClick(x, y) {
+        onmenuclick(x, y);
+    }
+
+    hideMenu(x) {
+        hide(x);
+    }
+
     render() {
         return <div>
             <div id="audiodiv" className="avbox"></div>

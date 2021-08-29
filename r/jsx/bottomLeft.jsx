@@ -4,6 +4,10 @@ class bottomLeft extends topLayer {
         this.state = {};
     }
 
+    indexDoRecent() {
+        index.doRecent();
+    }
+
     render() {
         return <div id="bottomLeftPanel">
             <div style={{ display: "inline-block", position: "relative" }}>
@@ -16,9 +20,18 @@ class bottomLeft extends topLayer {
             </div>
             <div id="tagKeyButton" className="panelButton smallButton" onClick={showTagsKey} title="Filter by tag">Tags
             </div>
-            <div id="recentButton" className="panelButton smallButton" onClick={index.doRecent}
+            <div id="recentButton" className="panelButton smallButton" onClick={this.indexDoRecent}
                 title="Recent changes and additions">New!</div>
             <div id="toggleLanguageButton" className="panelButton smallButton" onClick={toggleLanguage}>Cymraeg</div>
+            
+            <div id="tagsKey" onClick={hideTagsKey}>
+                <div id="tagsKeyPanel">
+                    <div id="id2">
+                        <div className="tagKeyButton"></div> Rocks
+                    </div>
+                </div>
+            </div>
+            
         </div>
     }
 }

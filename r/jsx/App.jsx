@@ -146,12 +146,7 @@ class topLayer extends React.Component {
     showLink(g('popup').placePoint.place, event);
   }
 
-  menuClick(x, y) {
-    onmenuclick(x, y);
-  }
-  hideMenu(x) {
-    hide(x);
-  }
+  
   openSideIndex() {
     index.openIndex();
   }
@@ -185,13 +180,6 @@ class topLayer extends React.Component {
 
         
         <div id="NLScredit">Historical maps: <a href="https://maps.nls.uk/" target="_blank">National Library of Scotland</a></div>
-        <div id="tagsKey" onClick={hideTagsKey}>
-            <div id="tagsKeyPanel">
-                <div id="id2">
-                    <div className="tagKeyButton"></div> Rocks
-                </div>
-            </div>
-        </div>
         
         
 

@@ -1000,8 +1000,8 @@ function selectCartography() {
 function selectCategory() {
     g("categoryDropdown").classList.toggle("show");
 }
-var selectedMap;
-function mapSelect() {
+//var selectedMap;
+function mapSelect(selectedMap) {
     window.location.search = "?cartography=" + selectedMap + "&project=" + (window.project.id);
 }
 function opacitySlider() {
