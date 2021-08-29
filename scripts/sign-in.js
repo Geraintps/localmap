@@ -32,14 +32,26 @@ function signin(nobreakout) {
 
     // Open a popup window and then poll to see when it's closed
     let signinUrl = `sign-in.htm?v=${window.version}&project=${window.project.id}`;
+    let signinUrlR = `/localmap/sign-in.htm?v=${window.version}&project=${window.project.id}`;
     signinWindow = window.open(signinUrl,
         'signin', "width=600,height=750,left=200,top=100,toolbar=0,status=0");
-    signinTimer = setInterval(function () {
-        if (!signinWindow || signinWindow.closed) {
-            clearInterval(signinTimer);
-            checkSignin(null);
-        }
-    }, 1000);
+    signinWindowR = window.open(signinUrlR,
+        'signin', "width=600,height=750,left=200,top=100,toolbar=0,status=0");
+    try {
+        signinTimer = setInterval(function () {
+            if (!signinWindow || signinWindow.closed) {
+                clearInterval(signinTimer);
+                checkSignin(null);
+            }
+        }, 1000);
+    } catch {
+        signinTimer = setInterval(function () {
+            if (!signinWindowR || signinWindow.closed) {
+                clearInterval(signinTimer);
+                checkSignin(null);
+            }
+        }, 1000);
+    }
 }
 
 function signinDone() {
