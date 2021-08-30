@@ -5,7 +5,8 @@ class topRight extends topLayer {
     }
 
     render() {
-        return <div className="dropdown" id="cartographyDropdown">
+        return  <div>
+         <div className="dropdown" id="cartographyDropdown">
         <div id="cartographyButton" onClick={selectCartography}
             className="whiteButton panelButton">Cartography&#8681;</div>
         <div id="mapDropdown" className="dropdown-content">
@@ -14,6 +15,7 @@ class topRight extends topLayer {
             <a id="dropdownSelection3" onClick={() => mapSelect("osm")}>OpenStreetMap</a>
         </div>
         <div className="panelButton whiteButton" id="opacitySlider" onClick={opacitySlider}>Labels</div>
+        </div>
         <img id="mapbutton" className="panelButton" onClick={this.maptoggleType} onContextMenu={this.maptoggleOpacity} title="Aerial/map. CTRL for transparent overlay" src="/localmap/img/map-icon.png" />
         
     </div>
