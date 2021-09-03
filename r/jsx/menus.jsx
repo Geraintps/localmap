@@ -1,4 +1,4 @@
-class menus extends topLayer {
+class Menus extends TopLayer {
     constructor(props) {
         super(props);
         this.state = { items: [], text: '', translated: false };
@@ -45,4 +45,4 @@ class menus extends topLayer {
 
 }
 
-ReactDOM.render(React.createElement(menus, null), document.getElementById('menusContainer'));
+ReactDOM.render(React.createElement(Menus, null), document.getElementById('menusContainer'));

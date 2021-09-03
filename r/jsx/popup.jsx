@@ -1,4 +1,4 @@
-class popup extends topLayer {
+class Popup extends TopLayer {
   constructor(props) {
       super(props);
       this.state = {};
@@ -96,7 +96,7 @@ class popup extends topLayer {
   }
 }
 
-ReactDOM.render(React.createElement(popup, null), document.getElementById('popupContainer'));
+ReactDOM.render(React.createElement(Popup, null), document.getElementById('popupContainer'));
 
 
 

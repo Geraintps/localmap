@@ -1,4 +1,4 @@
-class rangeDialog extends topLayer {
+class RangeDialog extends TopLayer {
     constructor(props) {
         super(props);
         this.state = { items: [], text: '', translated: false };
@@ -26,4 +26,4 @@ class rangeDialog extends topLayer {
     }
 }
 
-ReactDOM.render(React.createElement(rangeDialog, null), document.getElementById('rangeDialog'));
+ReactDOM.render(React.createElement(RangeDialog, null), document.getElementById('rangeDialog'));

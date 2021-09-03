@@ -12,6 +12,7 @@ class SplashScreen {
         } else if (window.location.queryParameters.nosplash) {
             this.permitDrop("nosplash");
         }
+        ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer'));
     }
 
     permitDrop(clue) {
@@ -29,7 +30,6 @@ class SplashScreen {
 
     dropSplash() {
         appInsights.trackEvent({ name: "dropSplash" });
-        hide("splash");
         let placeKey = window.placeToGo && window.placeToGo.place || window.location.queryParameters.place;
         if (placeKey) {
             goto(placeKey, null, "auto", !window.placeToGo || window.placeToGo.show, null, null, true);

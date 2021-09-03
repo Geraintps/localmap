@@ -1,4 +1,4 @@
-class help extends topLayer {
+class Help extends TopLayer {
     constructor(props) {
         super(props);
         this.state = {};
@@ -25,4 +25,4 @@ class help extends topLayer {
     }
 }
 
-ReactDOM.render(React.createElement(help, null), document.getElementById('helpContainer'));
+ReactDOM.render(React.createElement(Help, null), document.getElementById('helpContainer'));

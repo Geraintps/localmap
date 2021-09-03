@@ -1,4 +1,4 @@
-class topLeft extends topLayer {
+class TopLeft extends TopLayer {
     constructor(props) {
         super(props);
         this.state = {};
@@ -36,4 +36,4 @@ class topLeft extends topLayer {
     }
 }
 
-ReactDOM.render(React.createElement(topLeft, null), document.getElementById('topLeftContainer'));
+ReactDOM.render(React.createElement(TopLeft, null), document.getElementById('topLeftContainer'));

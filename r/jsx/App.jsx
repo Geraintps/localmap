@@ -64,7 +64,7 @@ class BottomLeft extends React.Component {
   }
 }*/
 
-class theMap extends React.Component {
+class TheMap extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  };
@@ -79,7 +79,7 @@ class theMap extends React.Component {
 
 }
 
-class topLayer extends React.Component {
+class TopLayer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  };
@@ -206,9 +206,9 @@ class topLayer extends React.Component {
 
 //ReactDOM.render(React.createElement(TopLeft, null), document.getElementById('topLeftControls'));
 
-ReactDOM.render(React.createElement(theMap, null), document.getElementById('theMap'));
+ReactDOM.render(React.createElement(TheMap, null), document.getElementById('theMap'));
 
-ReactDOM.render(React.createElement(topLayer, null), document.getElementById('topLayer'));
+ReactDOM.render(React.createElement(TopLayer, null), document.getElementById('topLayer'));
 
 
 

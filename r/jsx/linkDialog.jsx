@@ -1,4 +1,4 @@
-class linkDialog extends topLayer {
+class LinkDialog extends TopLayer {
     constructor(props) {
         super(props);
         this.state = { items: [], text: '', translated: false };
@@ -22,4 +22,4 @@ class linkDialog extends topLayer {
 
 }
 
-ReactDOM.render(React.createElement(linkDialog, null), document.getElementById('linkDialog'));
+ReactDOM.render(React.createElement(LinkDialog, null), document.getElementById('linkDialog'));
