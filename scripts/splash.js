@@ -12,7 +12,7 @@ class SplashScreen {
         } else if (window.location.queryParameters.nosplash) {
             this.permitDrop("nosplash");
         }
-        ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer'));
+        //ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer'));
     }
 
     permitDrop(clue) {
