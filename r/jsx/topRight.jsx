@@ -4,6 +4,14 @@ class TopRight extends TopLayer {
         this.state = {};
     }
 
+    maptoggleType() {
+        map.toggleType(event);
+    }
+    
+      maptoggleOpacity() {
+        map.toggleOpacity();
+    }
+
     render() {
         return  <div>
          <div className="dropdown" id="cartographyDropdown">

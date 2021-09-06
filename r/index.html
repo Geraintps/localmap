@@ -10,39 +10,39 @@
     <link rel="stylesheet" type="text/css" href="css/popupStyle.css"/>-->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
     
-    <script src="/localmap/scripts/azure-storage.common.min.js"></script>
-    <script src="/localmap/scripts/azure-storage.blob.min.js"></script>
-    <script src="/localmap/scripts/heic2any.min.js"></script>
-    <script src="/localmap/scripts/jquery-3.4.1.min.js"></script>
-    <script src="/localmap/scripts/markerclustererplus.min.js"></script>
-    <script src="/localmap/scripts/util.js?v=38"></script>
-    <script src="/localmap/scripts/sign-in.js?v=18"></script>
-    <script src="/localmap/scripts/exif-js.js"></script>
-    <script src="/localmap/scripts/model.js?v=23"></script>
-    <script src="/localmap/scripts/lightbox.js?v=11"></script>
-    <script src="/localmap/scripts/azuredb.js?v=14"></script>
+    <script src="../scripts/azure-storage.common.min.js"></script>
+    <script src="../scripts/azure-storage.blob.min.js"></script>
+    <script src="../scripts/heic2any.min.js"></script>
+    <script src="../scripts/jquery-3.4.1.min.js"></script>
+    <script src="../scripts/markerclustererplus.min.js"></script>
+    <script src="../scripts/util.js?v=38"></script>
+    <script src="../scripts/sign-in.js?v=18"></script>
+    <script src="../scripts/exif-js.js"></script>
+    <script src="../scripts/model.js?v=23"></script>
+    <script src="../scripts/lightbox.js?v=11"></script>
+    <script src="../scripts/azuredb.js?v=14"></script>
     <script src="https://nls.tileserver.com/api.js"></script>
-    <script src="/localmap/scripts/maps.js?v=63"></script>
-    <script src="/localmap/scripts/text-edit.js?v=7"></script>
-    <script src="/localmap/scripts/deep-map.js?v=77"></script>
-    <script src="/localmap/scripts/editor.js?v=11"></script>
-    <script src="/localmap/scripts/petals.js?v=11"></script>
-    <script src="/localmap/scripts/pics.js?v=9"></script>
-    <script src="/localmap/scripts/help.js?v=2"></script>
-    <script src="/localmap/scripts/groupSelector.js?v=6"></script>
-    <script src="/localmap/scripts/index.js?v=34"></script>
-    <script src="/localmap/scripts/track.js?v=20"></script>
-    <script src="/localmap/scripts/ProximityPolygons.js?v=5"></script>
-    <script src="/localmap/scripts/zones.js?v=6"></script>
+    <script src="../scripts/maps.js?v=63"></script>
+    <script src="../scripts/text-edit.js?v=7"></script>
+    <script src="../scripts/deep-map.js?v=77"></script>
+    <script src="../scripts/editor.js?v=11"></script>
+    <script src="../scripts/petals.js?v=11"></script>
+    <script src="../scripts/pics.js?v=9"></script>
+    <script src="../scripts/help.js?v=2"></script>
+    <script src="../scripts/groupSelector.js?v=6"></script>
+    <script src="../scripts/index.js?v=34"></script>
+    <script src="../scripts/track.js?v=20"></script>
+    <script src="../scripts/ProximityPolygons.js?v=5"></script>
+    <script src="../scripts/zones.js?v=6"></script>
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script src="/localmap/scripts/recorder.js"></script>
-    <script src="/localmap/scripts/recordingUI.js?v=3"></script>
+    <script src="../scripts/recorder.js"></script>
+    <script src="../scripts/recordingUI.js?v=3"></script>
 
     <link rel="icon" type="img/png" href="img/favicon96.png" sizes="96x96" />
     <link rel="icon" type="img/png" href="img/favicon32.png" sizes="32x32" />
     <link rel="icon" type="img/png" href="img/favicon16.png" sizes="16x16" />
-    <link rel="stylesheet" type="text/css" href="/localmap/css/deep-map.css?v=44" />
-    <link rel="stylesheet" href="/localmap/scripts/v6.5.0-dist/ol.css" />
+    <link rel="stylesheet" type="text/css" href="../css/deep-map.css?v=44" />
+    <link rel="stylesheet" href="../scripts/v6.5.0-dist/ol.css" />
 
     <script>
         // Occasional problem loading map
@@ -61,8 +61,18 @@
     <div id="bottomLeftContainer"></div>
     <div id="helpContainer"></div>
     <div id="popupContainer"></div>
-
-    <div id="rangeDialog"></div>
+    <div id="titleDialog" onclick="hide(this)" style="display: none; position: absolute; inset: 0px; background-color: rgba(0, 0, 0, 0.5);">
+        <div style="border-radius:10px;position:relative;top:30%;max-width:80%; width:500px; margin: 0 auto;background-color:whitesmoke;border: 2 solid blue; padding:10px;">
+            <p id="editTitlePrompt">Edit the title</p>
+            <div id="titleInput" type="text" style="width:90%;height:50px;margin:auto;overflow:hidden;background-color: white;color:black;border:1px solid blue;padding:4px;" contenteditable="true" onblur="this.whenDone(this.innerText)"></div>
+        </div>
+    </div>
+    <div id="rangeDialog" onclick="hide(this)" style="display: none; position: absolute; inset: 0px; background-color: rgba(0, 0, 0, 0.5);">
+        <div style="border-radius:10px;position:relative;top:30%;max-width:80%; width:500px; margin: 0 auto;background-color:whitesmoke;border: 2 solid blue; padding:10px;">
+            <p id="editRangePrompt">Tracking range</p>
+            <div id="rangeInput" type="text" style="width:90%;height:50px;margin:auto;overflow:hidden;background-color: white;color:black;border:1px solid blue;padding:4px;" contenteditable="true" onblur="this.whenDone(this.innerText)">10</div>
+        </div>
+    </div>
     <div id="menusContainer"></div>
     <input id="attachSoundInput" style="display:none;opacity: 0;" onchange="doAttachSound(this)" type="file"
             title="sound file" name="attachSoundInput" />
@@ -142,7 +152,7 @@
   <script src="jsx/bottomLeft.jsx" type="text/babel"></script>
   <script src="jsx/help.jsx" type="text/babel"></script>
   <script src="jsx/popup.jsx" type="text/babel"></script>
-  <script src="jsx/rangeDialog.jsx" type="text/babel"></script>
+  <!--<script src="jsx/rangeDialog.jsx" type="text/babel"></script>-->
   <script src="jsx/linkDialog.jsx" type="text/babel"></script>
   <script src="jsx/splash.jsx" type="text/babel"></script>
   <script src="jsx/menus.jsx" type="text/babel"></script>

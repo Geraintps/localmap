@@ -101,14 +101,6 @@ class TopLayer extends React.Component {
     onAddPlaceButton(this);
   }
 
-  maptoggleType() {
-    map.toggleType(event);
-  }
-
-  maptoggleOpacity() {
-    map.toggleOpacity();
-  }
-
   _handleKeyDown = (e) => {
     if (e.key === "Enter" || e.key === "Tab") {
       this.codeAddress(e.target.value);
