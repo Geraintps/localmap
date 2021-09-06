@@ -155,7 +155,7 @@ class TopLayer extends React.Component {
         </div>
 
         <a href="#" target="_blank" id="fullWindowButton" style={{display:"none"}} onClick={frameBreakout}><img
-                className="panelButton" title="full window" src="/localmap/img/expand.png" /></a>
+                className="panelButton" title="full window" src="img/expand.png" /></a>
         
         
         <div id="infowindow-content">

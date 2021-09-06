@@ -27,7 +27,7 @@ class Popup extends TopLayer {
                     <div className="toolbutton" onClick={() => this.formatDoc('InsertText','ŷ')}>ŷ</div>
                 </div>
                 <div className="toolbutton" onClick={onCreateLink} id="insertLinkButton" title="Insert link"><img
-                        src="/localmap/img/link.png" width="18px" height="18px"/></div>
+                        src="img/link.png" width="18px" height="18px"/></div>
                 <div id="popupTimestampTextBox" className="toolbutton"
                     style={{position:"absolute", right:0, backgroundColor:"rgba(0,0,0,0)", color:"black"}}></div>
             </div>
@@ -52,10 +52,10 @@ class Popup extends TopLayer {
                     onChange={this.uploadPlaceToButton} type="file" title="upload"
                     name="uploadToPlaceButton" multiple />
                 <div id="voiceRecorder" className="panelButton addButton " onClick={showVoiceRecorder}
-                    title="Voice recorder"><img src="/localmap/img/recorder.png" height="25px" style={{padding: 3}} /></div>
+                    title="Voice recorder"><img src="img/recorder.png" height="25px" style={{padding: 3}} /></div>
                 <div id="getLinkButton" className="panelButton addButton "
                     onClick={this.getLinkButton} title="Share a link to this place">
-                    <img src="/localmap/img/getlink.png" />
+                    <img src="img/getlink.png" />
                 </div>
                 <div id="editorHelpButton" className="panelButton addButton " onClick={showEditorHelp} title="Help">?
                 </div>

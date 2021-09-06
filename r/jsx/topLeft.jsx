@@ -10,13 +10,13 @@ class TopLeft extends TopLayer {
                 <span id="usernamespan"></span>
                 <input id="signInButtonTop" type='button' onClick={signin} value='Sign in'
                     title="Sign in to add places and comments" />
-                <img id="settingsButton" src="/localmap/img/settings.png"
+                <img id="settingsButton" src="img/settings.png"
                     style={{ display: "none", width: 25, height: 25, verticalAlign: "middle" }} title="Settings"
                     onClick={onSettingsButton} />
             </div>
             <div id='pauseButton' className="panelButton whiteButton" style={{ display: "none" }} onClick={this.windowtrackeronPauseButton}
                 title="Pause/resume tracking">
-                <img src='/localmap/img/tracking.png' />
+                <img src='img/tracking.png' />
             </div>
             <div id='showHelpButton' className="panelButton whiteButton" onClick={dohelp} title="help/about">?</div>
             <div id="addFileButton" className="panelButton addButton" title="Upload pics and then place them on the map"

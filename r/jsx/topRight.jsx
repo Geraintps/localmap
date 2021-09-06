@@ -24,7 +24,7 @@ class TopRight extends TopLayer {
         </div>
         <div className="panelButton whiteButton" id="opacitySlider" onClick={opacitySlider}>Labels</div>
         </div>
-        <img id="mapbutton" className="panelButton" onClick={this.maptoggleType} onContextMenu={this.maptoggleOpacity} title="Aerial/map. CTRL for transparent overlay" src="/localmap/img/map-icon.png" />
+        <img id="mapbutton" className="panelButton" onClick={this.maptoggleType} onContextMenu={this.maptoggleOpacity} title="Aerial/map. CTRL for transparent overlay" src="img/map-icon.png" />
         
     </div>
     }
