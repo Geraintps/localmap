@@ -22,12 +22,14 @@ export class MapTest {
     }
 
     visit(link, splash=false, clearCookies=false) {
+        
         let url = link || (this.testRunner.site
             + `?project=${this.project}`
             + `${this.cartography ? '&cartography=' + this.cartography : ''}`
             + `${this.place ? '&place=' + this.place : ""}`);
 
         cy.visit(url).then(() => {
+            cy.wait(5000);
             console.log("map loaded");
         });
         if (clearCookies) {

@@ -4,7 +4,21 @@ class Popup extends TopLayer {
       this.state = {};
   }
  
+  formatDoc(string1, string2) {
+    onFormatDoc(string1, string2);
+  }
 
+  uploadPlaceToButton() {
+    doUploadFiles("uploadToPlaceButton", g("uploadToPlaceButton").files, g('popup').placePoint);
+  }
+
+  addPicToPlaceButton() {
+    showFileSelectDialog('uploadToPlaceButton');
+  }
+
+  getLinkButton() {
+    showLink(g('popup').placePoint.place, event);
+  }
 
   render() {
       return <div id="popup" className="floatingPopup">
@@ -35,7 +49,7 @@ class Popup extends TopLayer {
                 <div id="editorTitleDescriptionPrompt" className="popupTextTopLine">TITLE<br /><br />DESCRIPTION
                 </div>
                 <div className="popupcontent">
-                    <div id="popuptext" contentEditable="true" onClick={event.stopPropagation}>
+                    <div id="popuptext" contentEditable="true" onClick={(event) => event.stopPropagation}>
                     </div>
                     <div id="popupComments"></div>
                 </div>

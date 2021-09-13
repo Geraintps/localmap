@@ -8,6 +8,19 @@ class BottomLeft extends TopLayer {
         index.doRecent();
     }
 
+    __handleKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === "Tab") {
+          index.doSearch(e.target.value.trim())
+        }
+    }
+
+    searchCancel() {
+        g('searchButton').value='';
+        index.doSearch('')
+    }
+
+    
+
     render() {
         return <div id="bottomLeftPanel">
             <div style={{ display: "inline-block", position: "relative" }}>

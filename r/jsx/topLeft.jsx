@@ -4,6 +4,34 @@ class TopLeft extends TopLayer {
         this.state = {};
     }
 
+    windowtrackeronPauseButton() {
+        window.tracker.onPauseButton();
+    }
+
+    FileSelectDialog() {
+        showFileSelectDialog("uploadButton");
+    }
+
+    UploadFiles() {
+        doUploadFiles(uploadButton, g("uploadButton").files, null);
+    }
+
+    AddPlaceButton() {
+        onAddPlaceButton(this);
+    }
+
+    _handleKeyDown = (e) => {
+        if (e.key === "Enter" || e.key === "Tab") {
+          this.codeAddress(e.target.value);
+        }
+    }
+
+    codeAddress(address) {
+        let cleanAddress = address.replace(/[|&;$%@"<>(){}#~:^£!*]/g, "").trim();
+        if (!cleanAddress) return;
+        map.gotoAddress(cleanAddress);
+    }
+
     render() {
         return <div id='topLeftControls' className="buttonPanel">
             <div id="usernamediv" className="panelButton whiteButton">

@@ -26,6 +26,13 @@ var RecentUploads = {};
 
 function init() {
     log("init");
+    
+    
+    
+    
+    
+    
+    
     //registerServiceWorker();
     if (JSON.stringify(navigator.onLine) == ("true")) {
         console.log("Browser Status: Online");
@@ -155,7 +162,7 @@ function mapReady() {
         closePopup();
         window.pinPops.hide();
         lightboxU.hide();
-        index.hideIndex();
+        updateIndexState();
     });
     currentTrail = [];
     if (window.Places && Object.keys(window.Places).length > 0) {
@@ -163,6 +170,10 @@ function mapReady() {
     } else {
         loadPlaces();
     }
+}
+
+function updateIndexState() {
+    this.setState({ openIndex: false });
 }
 
 

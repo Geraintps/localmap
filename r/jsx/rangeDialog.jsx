@@ -26,4 +26,3 @@ class RangeDialog extends TopLayer {
     }
 }
 
-ReactDOM.render(React.createElement(RangeDialog, null), document.getElementById('rangeDialog'));

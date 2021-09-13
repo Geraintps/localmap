@@ -4,7 +4,6 @@ class SplashScreen {
     constructor() {
         this.permits = {};
         setTimeout(() => { this.permitDrop("minimum show time"); }, 2000); 
-        
         this.onDropActions = [];
 
         if (Date.now() - getCookie("viewed") < 86400000) {
@@ -12,7 +11,7 @@ class SplashScreen {
         } else if (window.location.queryParameters.nosplash) {
             this.permitDrop("nosplash");
         }
-        ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer'));
+        
     }
 
     permitDrop(clue) {
@@ -22,7 +21,7 @@ class SplashScreen {
         if (p["places loaded"] && p["minimum show time"] &&
             (p["parameter goto"] || p["api goto"] || p["no user"] || p["signed in"] || p["recently viewed"])) {
             log("dropSplash " + clue);
-            this.dropSplash();
+            document.getElementById("continueButton").click();
         } else {
             log("permitDropSplash " + clue);
         }
