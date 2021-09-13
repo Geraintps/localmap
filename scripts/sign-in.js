@@ -32,7 +32,7 @@ function signin(nobreakout) {
 
     // Open a popup window and then poll to see when it's closed
     let signinUrl = `sign-in.htm?v=${window.version}&project=${window.project.id}`;
-    let signinUrlR = `/localmap/sign-in.htm?v=${window.version}&project=${window.project.id}`;
+    let signinUrlR = `../sign-in.htm?v=${window.version}&project=${window.project.id}`;
     signinWindow = window.open(signinUrl,
         'signin', "width=600,height=750,left=200,top=100,toolbar=0,status=0");
     signinWindowR = window.open(signinUrlR,
