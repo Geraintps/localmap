@@ -12,7 +12,7 @@ class Petals {
         var petalSize = this.petalRadius * 2 + "px";
         //ReactDOM.render(React.createElement(Menus, null), document.getElementById('menusContainer'));
         this.petals = g("petals");
-        //this.petals.className = "petals";
+        this.petals.className = "petals";
         if (!this.petals) return;
         // Top left of hexagon shapes.
         // With a horizontal middle row:
