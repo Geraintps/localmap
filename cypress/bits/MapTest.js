@@ -29,7 +29,6 @@ export class MapTest {
             + `${this.place ? '&place=' + this.place : ""}`);
 
         cy.visit(url).then(() => {
-            cy.wait(5000);
             console.log("map loaded");
         });
         if (clearCookies) {

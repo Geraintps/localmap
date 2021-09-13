@@ -16,8 +16,7 @@ class Menus extends TopLayer {
         return <div>
             <div id="audiodiv" className="avbox"></div>
 
-            <div id="petals">
-            </div>
+            <div id="petals"></div>
 
             <div id="lightbox"> </div>
 

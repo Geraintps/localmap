@@ -10,6 +10,7 @@ class Petals {
         this.isStar = isStar;
         this.petalRadius = 100.0;
         var petalSize = this.petalRadius * 2 + "px";
+        ReactDOM.render(React.createElement(Menus, null), document.getElementById('menusContainer'));
         this.petals = g("petals");
         this.petals.className = "petals";
         if (!this.petals) return;

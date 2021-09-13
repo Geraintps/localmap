@@ -3,12 +3,7 @@ class SplashUI extends TopLayer {
         super(props);
         this.state = { project: "", hideSplash: false };
         this.splash = g("splash");
-        this.dropSplash = this.dropSplash.bind(this);
-    }
-
-    dropSplash() {
-        this.setState({ hideSplash: true });
-        splashScreen.dropSplash();
+        dropSplashState = dropSplashState.bind(this);
     }
 
     render() {
@@ -72,7 +67,7 @@ class SplashUI extends TopLayer {
                                     <p id="loadingFlag" style={{ backgroundColor: "yellow" }}>Loading... | Llwytho...</p>
                                     <p>This site uses cookies. | Mae'r wefan hon yn defnyddio cwcis.
                                         <button id="continueButton" style={{ display: "none" }} className="continueButton"
-                                            onClick={this.dropSplash}>Continue
+                                            onClick={dropSplashState}>Continue
                                             | Parhewch</button>
                                     </p>
                                     <p><small><a href="https://www.span-arts.org.uk/" target="_blank" id="spanArtsLink">Span
@@ -93,7 +88,7 @@ class SplashUI extends TopLayer {
                                     </div>
                                 </div>
                             </div>
-                            <div className="closeX boxClose" onClick={this.dropSplash} style={{ display: "none" }} id="splashCloseX">
+                            <div className="closeX boxClose" onClick={dropSplashState} style={{ display: "none" }} id="splashCloseX">
                                 X</div>
                         </div>
                     </div>
@@ -120,7 +115,7 @@ class SplashUI extends TopLayer {
                                 <p id="loadingFlag" style={{ backgrounColor: "yellow" }}>Loading...</p>
                                 <p>This site uses cookies.
                                     <button id="continueButton" style={{ display: "none" }} className="continueButton"
-                                        onClick={this.dropSplash}>Continue</button>
+                                        onClick={dropSplashState}>Continue</button>
                                 </p>
                                 <p><a href="http://foliosuttoncoldfield.org.uk/telling-suttons-stories/" target="_blank">Read
                                     more</a>
@@ -132,7 +127,7 @@ class SplashUI extends TopLayer {
 
                                 </p>
                             </div>
-                            <div className="closeX boxClose" onClick={this.dropSplash} style={{ display: "none" }} id="splashCloseX">
+                            <div className="closeX boxClose" onClick={dropSplashState} style={{ display: "none" }} id="splashCloseX">
                                 X</div>
                         </div>
                     </div>
@@ -150,10 +145,10 @@ class SplashUI extends TopLayer {
                                 <p id="loadingFlag" style={{ backgroundColor: "yellow" }}>Loading...</p>
                                 <p>This site uses cookies.
                                     <button id="continueButton" style={{ display: "none" }} className="continueButton"
-                                        onClick={this.dropSplash}>Continue</button>
+                                        onClick={dropSplashState}>Continue</button>
                                 </p>
                             </div>
-                            <div className="closeX boxClose" onClick={this.dropSplash} style={{ display: "none" }} id="splashCloseX">
+                            <div className="closeX boxClose" onClick={dropSplashState} style={{ display: "none" }} id="splashCloseX">
                                 X</div>
                         </div>
                     </div>
@@ -247,7 +242,7 @@ class SplashUI extends TopLayer {
                                     <p id="loadingFlag" style={{ backgroundColor: "yellow" }}>Loading... | Llwytho...</p>
                                     <p>This site uses cookies. | Mae'r wefan hon yn defnyddio cwcis.
                                         <button id="continueButton" style={{ display: "none" }} className="continueButton"
-                                            onClick={this.dropSplash}>Continue
+                                            onClick={dropSplashState}>Continue
                                             | Parhewch</button>
                                     </p>
                                     <p><small><a href="https://www.span-arts.org.uk/" target="_blank" id="spanArtsLink">Span
@@ -268,7 +263,7 @@ class SplashUI extends TopLayer {
                                     </div>
                                 </div>
                             </div>
-                            <div className="closeX boxClose" onClick={this.dropSplash} style={{ display: "none" }} id="splashCloseX">
+                            <div className="closeX boxClose" onClick={dropSplashState} style={{ display: "none" }} id="splashCloseX">
                                 X</div>
                         </div>
                     </div>
@@ -280,5 +275,6 @@ class SplashUI extends TopLayer {
 
     }
 }
+
 
 ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer'));

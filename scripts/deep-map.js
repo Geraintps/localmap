@@ -25,14 +25,7 @@ window.Places = {};
 var RecentUploads = {};
 
 function init() {
-    log("init");
-    
-    
-    
-    
-    
-    
-    
+    log("init"); 
     //registerServiceWorker();
     if (JSON.stringify(navigator.onLine) == ("true")) {
         console.log("Browser Status: Online");
@@ -97,7 +90,7 @@ function init() {
         });
         log("got keys");
     });
-
+    
     window.pinPops = new Petals(true, ["lightbox", "audiodiv"]); // Set up shape 
     if (location.queryParameters.nosearch) {
         hide("bottomLeftPanel");

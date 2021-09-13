@@ -1,5 +1,4 @@
 // Splash screen 
-
 class SplashScreen {
     constructor() {
         this.permits = {};
@@ -21,7 +20,7 @@ class SplashScreen {
         if (p["places loaded"] && p["minimum show time"] &&
             (p["parameter goto"] || p["api goto"] || p["no user"] || p["signed in"] || p["recently viewed"])) {
             log("dropSplash " + clue);
-            document.getElementById("continueButton").click();
+            dropSplashState();
         } else {
             log("permitDropSplash " + clue);
         }
@@ -51,4 +50,9 @@ class SplashScreen {
             this.onDropActions.pop()();
         }
     }
+}
+
+function dropSplashState() {
+    this.setState({ hideSplash: true });
+    new SplashScreen().dropSplash();
 }
