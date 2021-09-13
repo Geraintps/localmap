@@ -322,7 +322,7 @@ class LightboxU extends U {
 }
 
 
-class AudioPlayer {
+class AudioPlayer { 
     constructor (audiodiv){
         this.audiodiv = audiodiv;
         html(this.audiodiv, "<audio id='audiocontrol' controls='controls' autoplay='autoplay' type='audio/mpeg'></audio>");
