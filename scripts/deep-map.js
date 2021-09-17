@@ -192,7 +192,7 @@ function loadPlaces() {
         setGroupOptions();
         index.showIndex();
         clearTimeout(window.restartTimer);
-        splashScreen.permitDrop("places loaded");
+        splashScreen.permitDrop("places loaded"); 
         if (window.location.queryParameters.place || window.location.queryParameters.signin) {
             splashScreen.permitDrop("parameter goto");
         }

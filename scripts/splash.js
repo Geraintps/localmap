@@ -45,7 +45,7 @@ class SplashScreen {
         if (!this.isShowing) this.doOnDropActions();
     }
 
-    doOnDropActions () {
+    doOnDropActions () { 
         while (this.onDropActions.length) {
             this.onDropActions.pop()();
         }

@@ -309,7 +309,7 @@ function log(s) {
         console.log(new Date().toUTCString() + " " + s);
     }
 }
-log("util load");
+log("util load"); 
 
 var observableNameCounter = 0;
 
