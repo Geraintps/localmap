@@ -150,7 +150,7 @@ class Place {
 
 }
 
-var seqid = 100;
+var seqid = 100; 
 // An image or other media file attached to a place
 class Picture {
     constructor(place, extension, file) {

@@ -1,7 +1,7 @@
 class RangeDialog extends TopLayer {
     constructor(props) {
         super(props);
-        this.state = { items: [], text: '', translated: false };
+        this.state = { items: [], text: '', translated: false }; 
     }
 
     hideMenu(x) {

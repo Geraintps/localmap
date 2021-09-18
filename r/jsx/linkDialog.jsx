@@ -1,4 +1,4 @@
-class LinkDialog extends TopLayer {
+class LinkDialog extends TopLayer { 
     constructor(props) {
         super(props);
         this.state = { items: [], text: '', translated: false };

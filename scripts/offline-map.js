@@ -9,7 +9,7 @@ var newMapOffsetX = 0;
 var newMapOffsetY = 0;
 var mapHeight = 800;
 var mapWidth = 1978;
-
+ 
 var mapimgsrc = "";
 
 

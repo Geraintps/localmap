@@ -277,4 +277,4 @@ class SplashUI extends TopLayer {
 }
 
 
-ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer'));
+ReactDOM.render(React.createElement(SplashUI, null), document.getElementById('splashContainer')); 

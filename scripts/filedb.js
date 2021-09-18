@@ -4,7 +4,7 @@ var mostrecenttimestamp = 0;
 //
 // Get stuff 
 //
-function getFile(uri, onload) {
+function getFile(uri, onload) { 
     let req = new XMLHttpRequest();
 
     if (onload) {

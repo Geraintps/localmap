@@ -1,6 +1,6 @@
 /** Pics that pop up around a place on hover */
 
-class Petals {
+class Petals { 
 
     /** Set up the hexagon of "petals" for displaying pictures on hover.
      *  Called once on init.

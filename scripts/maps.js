@@ -510,7 +510,7 @@ class GenMap {
                 break;
         }
 
-    }
+    } 
     codeAddress(address) {
         let cleanAddress = address.replace(/[|&;$%@"<>(){}#~:^£!*]/g, "").trim();
         if (!cleanAddress) return;

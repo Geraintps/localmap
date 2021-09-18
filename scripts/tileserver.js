@@ -37,7 +37,7 @@ var protocol = ('https:' == document.location.protocol ? 'https://' : 'http://')
  *
  * The function returns tiles from the tileserver_default, and after the dynamic test is finished from the fastest tileserver available
  */
-function NLSTileUrlOS(x, y, z) {
+function NLSTileUrlOS(x, y, z) { 
 
   // the "MAXZOOM" constant
   if (x == "MAXZOOM")

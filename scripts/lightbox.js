@@ -318,7 +318,7 @@ class LightboxU extends U {
 
     get div() {
         return this.lightbox;
-    }
+    } 
 }
 
 

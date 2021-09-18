@@ -20,7 +20,7 @@ Index and group selector show groups in a heirarchy: select the supergroup then 
 */
 
 
-function showZoneUI() {
+function showZoneUI() { 
     window.geoBroom = ZoneUI();
     index.hideIndexOK = false;
     index.indexCheckBoxes = true;

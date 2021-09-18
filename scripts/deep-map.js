@@ -149,7 +149,7 @@ function init() {
 /**
  * Called when the map is loaded or refreshed.
  */
-function mapReady() {
+function mapReady() { 
     log("map ready");
     window.map.onclick((e) => {
         closePopup();

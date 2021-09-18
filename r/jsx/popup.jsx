@@ -76,7 +76,7 @@ class Popup extends TopLayer {
             </div>
       </div>
 
-      <div id="tags"> </div>
+      <div id="tags"> </div> 
       <div id="author"> </div>
       <div id="popclose" onClick={closePopup}>X</div>
 

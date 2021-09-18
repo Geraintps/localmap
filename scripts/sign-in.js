@@ -9,7 +9,7 @@ function usernameIfKnown() {
 
 function usernameOrSignIn() {
     return usernameIfKnown() || signin() || "";
-}
+} 
 
 function onClickSignIn() {
     if (g('consent').checked) signin();

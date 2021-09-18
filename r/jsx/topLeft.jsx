@@ -64,4 +64,4 @@ class TopLeft extends TopLayer {
     }
 }
 
-ReactDOM.render(React.createElement(TopLeft, null), document.getElementById('topLeftContainer'));
+ReactDOM.render(React.createElement(TopLeft, null), document.getElementById('topLeftContainer')); 

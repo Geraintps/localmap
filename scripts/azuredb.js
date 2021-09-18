@@ -9,7 +9,7 @@ var isSendQueueEmptyObservable = new ObservableWrapper(() => window.imageUploadQ
 
 /** While photos, pics etc are being uploaded, retain the dataUrl. 
  * @param mediaId Bare id (no url prefix) with file extension
- * @param data Data read from file locally, as data URL
+ * @param data Data read from file locally, as data URL 
  */
 function cacheLocalMedia(mediaId, data) {
     if (mediaId.match(/\.pdf$/i)) return;

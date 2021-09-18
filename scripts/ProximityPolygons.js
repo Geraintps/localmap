@@ -1,6 +1,6 @@
 /*
  * Draw proximity polygons around a set of pins.
- */
+ */ 
 
 /**
  * Represents a point on the ground. Assumes all points are in approximately the same latitude.

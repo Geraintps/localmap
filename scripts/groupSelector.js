@@ -78,7 +78,7 @@ class GroupSelector {
         let newPathSet = oldGroupPaths.map((oldGroupPath, oldGroupIndex) => {
             let oldPathSplit = oldGroupPath.split("/");
             // Reconstruct the path, working along the selectors until the changed one:
-            let newPath = "";
+            let newPath = ""; 
             let selectors = selectorRows[oldGroupIndex].getElementsByTagName("select");
             for (let i = 0; i < selectors.length; i++) {
                 if (selectors[i].value == "(new)") {

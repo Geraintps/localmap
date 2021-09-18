@@ -1,5 +1,5 @@
 //
-// Text editor
+// Text editor 
 //
 
 // User clicked one of the editing buttons (H, para, Bold, Italic, ...)

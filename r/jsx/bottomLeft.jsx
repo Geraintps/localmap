@@ -46,7 +46,7 @@ class BottomLeft extends TopLayer {
             </div>
             
         </div>
-    }
+    } 
 }
 
 ReactDOM.render(React.createElement(BottomLeft, null), document.getElementById('bottomLeftContainer'));

@@ -4,7 +4,7 @@
 const mapTypeEvent = new Event("mapType");
 var timeWhenLoaded;
 
-
+ 
 
 /**
  * Initialize map module

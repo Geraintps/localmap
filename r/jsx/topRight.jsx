@@ -1,7 +1,7 @@
 class TopRight extends TopLayer {
     constructor(props) {
         super(props);
-        this.state = { dropdown: false };
+        this.state = { dropdown: false }; 
 
     }
 

@@ -1,6 +1,6 @@
 /**
  * Controls the audio recording panel in the place editor.
- */
+ */ 
 class RecordingUI { 
     /** Show the recording control panel and start recording.
      * @param {*} pin The current map pin to which to attach recordings.

@@ -1,4 +1,4 @@
-class Menus extends TopLayer {
+class Menus extends TopLayer { 
     constructor(props) {
         super(props);
         this.state = { items: [], text: '', translated: false };

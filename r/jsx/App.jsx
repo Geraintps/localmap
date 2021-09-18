@@ -64,7 +64,7 @@ class BottomLeft extends React.Component {
   }
 }*/
 
-class TheMap extends React.Component {
+class TheMap extends React.Component { 
   constructor(props) {
     super(props);
     this.state = {};

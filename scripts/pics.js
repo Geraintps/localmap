@@ -4,7 +4,7 @@
  * 
  * @param {*} auxButton The file input button, to hide
  * @param {*} files from the input field = blobs with filenames
- * @param {*} pin map pin with place to which to add pics, or null if TBD
+ * @param {*} pin map pin with place to which to add pics, or null if TBD 
  */
 async function doUploadFiles(auxButton, files, pin) {
     if (auxButton) hide(auxButton);

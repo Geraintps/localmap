@@ -12,7 +12,7 @@ function dohelp() {
     }
 }
 
-function showBaseHelp() {
+function showBaseHelp() { 
     appInsights.trackEvent({ name: "showBaseHelp" });
     var svg = g("svgBaseHelp");
     show("basehelp");

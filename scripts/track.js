@@ -103,7 +103,7 @@ class Tracker {
         }
     }
 
-    /** Private. UI turn off tracking */
+    /** Private. UI turn off tracking */ 
     switchOffTracking() {
         var b = g("pauseButton");
         b.innerHTML = "<img src='img/tracking.png'/>";

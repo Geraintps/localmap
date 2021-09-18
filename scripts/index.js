@@ -211,7 +211,7 @@ class Index {
         if (this.noIndex || g("loosePicsShow").children.length > 0) {
             hide("indexSidebar");
         } else {
-            show("indexSidebar");
+            show("indexSidebar"); 
             this.openIndex();
 
             // Set index content:

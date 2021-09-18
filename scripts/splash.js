@@ -1,5 +1,5 @@
 // Splash screen 
-class SplashScreen {
+class SplashScreen { 
     constructor() {
         this.permits = {};
         setTimeout(() => { this.permitDrop("minimum show time"); }, 2000); 

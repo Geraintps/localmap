@@ -215,7 +215,7 @@ function promptForInfo(place, item, msg, locusId) {
         if (locusId) {
             let locus = g(locusId); if (locus) {
                 locus.style.outline = "3px dashed red";
-                setTimeout(() => { locus.style.outline = ""; }, 6000);
+                setTimeout(() => { locus.style.outline = ""; }, 6000); 
             }
         }
         setTimeout(() => alert(msg), 100);
